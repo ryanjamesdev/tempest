@@ -8,6 +8,7 @@ function sortNumber(a,b) {
 function getArray() {
     var alphaExp = /^[a-zA-Z]+$/; 
 
+// This function takes the array, orders it, adds the sum of the two largest numbers and returns the value
 function sumOf(x) {
     // when the user adds atleast two numbers add the two biggest and return the value
     array.sort(sortNumber);
@@ -38,6 +39,7 @@ function sumOf(x) {
             var raiseError = document.querySelector('h5');
             raiseError.textContent = 'Please enter atleast two numbers seperated by commas for us to add!'
         } else {
+            // When the user enters a list of numbers, run the sumOf function.
             sumOf(arrayField);
         }
     }

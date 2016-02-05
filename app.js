@@ -8,6 +8,22 @@ function sortNumber(a,b) {
 function getArray() {
     var alphaExp = /^[a-zA-Z]+$/; 
 
+function sumOf(x) {
+    // when the user adds atleast two numbers add the two biggest and return the value
+    array.sort(sortNumber);
+    // Then we add the two biggest numbers of the array and save it to the result variable.
+    var result = array[0] + array[1];
+    // Then we share the result with the user by updating the browser
+    var myHeading = document.querySelector('h2');
+    myHeading.textContent = "The sum of your two biggest numbers is: " + result;
+    // Like a good student, it's important to show your work
+    var showYourWork = document.querySelector('h3');
+    showYourWork.textContent = array[0] + " + " + array[1] + " = " + result;
+    //Make the error go away
+    var raiseError = document.querySelector('h5');
+    raiseError.textContent = '';
+}
+
 	// This grabs the value of the input
     var arrayField = document.getElementById('arrayField').value;
 
@@ -22,19 +38,7 @@ function getArray() {
             var raiseError = document.querySelector('h5');
             raiseError.textContent = 'Please enter atleast two numbers seperated by commas for us to add!'
         } else {
-            // when the user adds atleast two numbers add the two biggest and return the value
-            array.sort(sortNumber);
-            // Then we add the two biggest numbers of the array and save it to the result variable.
-            var result = array[0] + array[1];
-            // Then we share the result with the user by updating the browser
-            var myHeading = document.querySelector('h2');
-            myHeading.textContent = "The sum of your two biggest numbers is: " + result;
-            // Like a good student, it's important to show your work
-            var showYourWork = document.querySelector('h3');
-            showYourWork.textContent = array[0] + " + " + array[1] + " = " + result;
-            //Make the error go away
-            var raiseError = document.querySelector('h5');
-            raiseError.textContent = '';
+            sumOf(arrayField);
         }
     }
 };

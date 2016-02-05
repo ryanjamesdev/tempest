@@ -6,3 +6,11 @@
 	color: #a94442;
 	font-style: italic;
 }
+
+footer {
+	margin: 100px 0px 0px 0px;
+}
+
+#center-link {
+	text-align: center;
+}

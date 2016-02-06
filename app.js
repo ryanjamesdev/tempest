@@ -4,13 +4,13 @@ function sortNumber(a,b) {
     	}
 
 
-// the function which handles the input and returns the sum of the two largest numbers
+// this function is used to ensure the user didn't enter any letters
 function getArray() {
     var alphaExp = /^[a-zA-Z]+$/; 
 
 // This function takes the array, orders it, adds the sum of the two largest numbers and returns the value
 function sumOf(x) {
-    // when the user adds atleast two numbers add the two biggest and return the value
+    // Sort the ary with the sortNumber function
     array.sort(sortNumber);
     // Then we add the two biggest numbers of the array and save it to the result variable.
     var result = array[0] + array[1];
@@ -20,9 +20,6 @@ function sumOf(x) {
     // Like a good student, it's important to show your work
     var showYourWork = document.querySelector('h3');
     showYourWork.textContent = array[0] + " + " + array[1] + " = " + result;
-    //Make the error go away
-    var raiseError = document.querySelector('h5');
-    raiseError.textContent = '';
 }
 
 	// This grabs the value of the input
@@ -41,6 +38,9 @@ function sumOf(x) {
         } else {
             // When the user enters a list of numbers, run the sumOf function.
             sumOf(arrayField);
+            //Make the error go away
+            var raiseError = document.querySelector('h5');
+            raiseError.textContent = '';
         }
     }
 };

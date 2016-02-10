@@ -1,10 +1,19 @@
-// this function is used to ensure the user didn't enter any letters
-function getArray() {
-    var alphaExp = /^[a-zA-Z]+$/; 
+// The setup
+
+// This is a function to convert a string input into an array of integers
+function stringConvert(string) {
+    var myArray = string.split(" ");
+    for (var i=0; i < myArray.length; i++) {
+        myArray[i] = parseInt(myArray[i], 10); 
+    };
+    return myArray;
+};
 
 
-// This function adds the sum of the two largest numbers and returns the value
-function topTwoInt(intArray) {
+
+// This function adds the sum of the two largest integers of an array and returns the value
+function topTwoInt(theArray) {
+    var intArray = theArray;
     var highestInt = -Infinity;
     var secondHighestInt = -Infinity;
     var answer = 0;
@@ -21,41 +30,42 @@ function topTwoInt(intArray) {
             secondHighestInt = intArray[i];
         }
     }
-    return highestInt + secondHighestInt; 
+    answer = highestInt + secondHighestInt;
+    return answer;
 };
 
-// This grabs the value of the input
+// this function is used to ensure the user didn't enter any letters
+function getArray() {
+    var alphaExp = /^[a-zA-Z]+$/;
+
+
+// This is the program
+
+// This stores the arrayField input as a variable
 var arrayField = document.getElementById('arrayField').value;
 
+// If the string has any letters in it, fail;
 if (arrayField.match(alphaExp)) {
-    // Fail if user enters letters
     var raiseError = document.querySelector('h5');
     raiseError.textContent = 'No not letters! We want numbers!!';
 } else {
-    var array = JSON.parse("[" + arrayField + "]");
-    if (arrayField.length < 2) {
-        // If the user enters only 1 number, tell them to enter more!
+    // If the string is only numbers than where going to convert it into an array of integers
+    // and check to see if they entered atleast two numbers
+    // If they didn't were going to tell them to enter more!
+    stringConvert(arrayField);
+    if (stringConvert(arrayField).length < 2) {
         var raiseError = document.querySelector('h5');
         raiseError.textContent = 'Please enter atleast two numbers seperated by commas for us to add!'
     } else {
-        var array = JSON.parse("[" + arrayField + "]");
-        // When the user enters a list of numbers, run the topTwoInt function.
-        topTwoInt(arrayField);
-        //Make any errors go away
+        // if the array is all integers and is atleast two integers long
+        // We'll make sure to clear any previous errors from the screen
         var raiseError = document.querySelector('h5');
         raiseError.textContent = '';
-
+        // then we are going to run the program to get the two largest numbers
+        topTwoInt(stringConvert(arrayField));
+        // Then tell the user what their two biggest numbers are!
         var myHeading = document.querySelector('h2');
-        myHeading.textContent = "The sum of your two biggest numbers is: " + topTwoInt(arrayField);
-
-
-            
-        // Then we share the result with the user by updating the browser
-        // var myHeading = document.querySelector('h2');
-        // myHeading.textContent = "The sum of your two biggest numbers is: " + answer;
-        // Like a good student, it's important to show your work
-        // var showYourWork = document.querySelector('h3');
-        // showYourWork.textContent = b1 + " + " + b2 + " = " + result;
+        myHeading.textContent = "The sum of your two biggest numbers is: " + topTwoInt(stringConvert(arrayField)) ;
         }
     }
 };

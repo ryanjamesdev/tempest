@@ -21,12 +21,7 @@ function topTwoInt(intArray) {
             secondHighestInt = intArray[i];
         }
     }
-    var answer = highestInt + secondHighestInt;
-
-    var myHeading = document.querySelector('h2');
-    myHeading.textContent = "The sum of your two biggest numbers is: " + answer;
-
-    return answer;
+    return highestInt + secondHighestInt; 
 };
 
 // This grabs the value of the input
@@ -49,6 +44,9 @@ if (arrayField.match(alphaExp)) {
         //Make any errors go away
         var raiseError = document.querySelector('h5');
         raiseError.textContent = '';
+
+        var myHeading = document.querySelector('h2');
+        myHeading.textContent = "The sum of your two biggest numbers is: " + topTwoInt(arrayField);
 
 
             
